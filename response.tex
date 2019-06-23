@@ -1,0 +1,80 @@
+\documentclass[]{article}
+%opening
+\title{Author Response}
+\author{}
+\date{}
+
+\newcommand{\AR}[1]{\mathsf{Author\_Response}\ #1}
+\newcommand{\CM}[1]{{\mathsf{Comment}\ #1}}
+
+\begin{document}
+
+\maketitle
+
+%\begin{abstract}
+
+%\end{abstract}
+
+\noindent\textit{Dear Shepherd}, 
+
+On behalf of my co-authors, we thank you very much for giving us an opportunity to revise our manuscript. We truly appreciate the positive and constructive comments and suggestions given by the reviewers. After carefully studying the comments, we have made the corresponding modifications which are listed in the following with label ``Author\_Response" (after each reviewer’s comment starting with ``Comment"). Furthermore, we also corrected the typos and grammar errors in the paper. 
+
+
+
+\section{Reviewer 1}
+\begin{itemize}
+	\item $\CM{1.1}$: The gain of IBWH seems trivial. First, The reward rate only improves for one epoch and will fall back into the point when there is no BWH attack. On average, the reward rate is still less than BWH. Second, although user appears to gain more reward rate in a single epoch when performing IBWH, while the mining reward rate is only probabilistic, there is no guarantee of reward in the single epoch. Besides, the gain in one epoch is relatively limited during mining. Third, in reality, it can be burdensome for the user to drop in and out mining pool.
+	\item[-] $\AR{1.1}$: We thank the referee 1 for these good comments. For the first comment, on average, the reward rate is still less than BWH. We assume when the attacker has to stop attacking, it is good for the attacker to adopt IBWH for the optimal mining reward rate. For the second comment, the reward and the reward rate of the BWH and IBWH in one block is probabilistic, however, the expectation value of the IBWH is larger than BWH in one epoch (usually, 2016 blocks.). For the third comment, IBWH do not need the attacker drop out the victim pool. They could mining honestly in the victim pool, thus the attacker earns $\frac{(\alpha - \tau\alpha)}{1} + \frac{(\tau\alpha + \beta)}{1}\times\frac{\tau\alpha}{\tau\alpha + \beta} = \alpha$.
+ 
+	
+	\item $\CM{1.2}$: This paper does not have a convincing definition of dynamic mining power. It is difficult to convince me why assuming Bitcoin networks' computation power increases with a fixed rate in his analysis. 
+	\item[-] $\AR{1.2}$: Thanks for this good suggestion. For the change of computation power within one epoch, We address this point in Paragraph 4, Section 6. Even the Bitcoin networks' computation power increase with different rates (for example, increase 100 hash/s for 5 days, decrease 50 hash/s for 5 days.), however, it can be seemed as increasing with a fixed rate (i.e., increase 75 hash/s for 10 days. because $100\times5 + 50\times5 = 75\times10$). At the end of the epoch, the difficulty changes in these two cases are the same. For the change of computation power across the epochs, we use $n_1^*, n_2^*, n_3^*,...$ to represent the fixed rate $n^*$ in Section 6.
+	
+	\item $\CM{1.3}$: This paper does not give an evaluation of the reward rate under dynamic mining power, which is necessary to illustrate the benefits of IBWH under this circumstance.
+	
+	\item[-] $\AR{1.3}$: We have appended the evaluation of the reward rate under dynamic mining power in Section 7.
+ 
+\end{itemize}
+
+%--------------------------------------------------------------------------------------------
+\section{Reviewer 2}
+
+
+
+
+\begin{itemize}
+\item $\CM{2.1}$: First, the paper claims optimality: I do not see why the strategies they propose are optimal, i.e., why is it true that another strategy with better gains does not exist.
+\item[-] $\AR{2.1}$: The attacker could change the proportion of the infiltration miners, i.e., $\tau.$ We use Theorem 2 and Theorem 4 to illustrate the reason why IBWH is optimal.
+	
+
+\item $\CM{2.2}$: Second, while the paper does talk about the change of mining power, it considers a change across epochs and not within an epoch. 
+
+\item[-] $\AR{2.2}$:  We address this point in Paragraph 3, Section 6. Because the difficulty does not change, it will not influence the results. 
+
+\end{itemize}
+
+
+
+
+
+
+%-----------------------------------------------------------------
+\section{Reviewer 3}
+\begin{itemize}
+	\item $\CM{3.1}$: The paper is written in a very confusing manner. First, the authors need to do some careful proofreading for broken sentences, missing articles, and proposition. Second several claims are out of context making it very hard to verify their correctness. 
+    \item[-] $\AR{3.1}$: We thank the referee 1 for this good comment. We have done more proofreading with each sentence, re-name some confusing sections and re-layout the structure of the whole paper.
+
+
+
+    \item $\CM{3.2}$: It might be because of the above, but I am not sure I understand the actual attack. It seems to me that the attack is the BWH attack truncated to match situations in which it is clear for the adversary that he needs to stop any attack (e.g., because he is about to take a break). If this is indeed the case, it would seem more natural to first analyze BWH in the variable difficulty (which is a more general attack) and then propose a new attack which is limited in scope as it only applies to the above adversary.
+    \item[-] $\AR{3.2}$: We have specified the reward rate of the BWH attacker in section 4, then we propose IBWH to get the optimal reward rate. The attacker could change the proportion of the infiltration miners, i.e., $\tau$. The analysis shows that when the attacker changes $\tau$ to zero, the attacker could get optimal reward rate, however, in reality, when the attacker changes $\tau$ to zero, the attacker has to stop the attack. To sum up, it is actually a limitation of our attack.
+
+\item $\CM{3.3}$: Section 7 is very informal and in my opinion should either be removed or there should be an explicit statement that it is not part of any claimed result. It touches on a very important topic, namely analysis of existing attacks in the dynamic setting, but only at a surface lever and very informally. The danger of having such a section as part of a publication at ISC is that it might discourage researchers from actually solving the problem. In my opinion, this section effectively enumerate open problems, which is good, but it did not give me any intuition of why (or how) the analysis proposed in this paper would solve these problems. I would propose that the authors move this section to the conclusion section and clearly mark it as open-problems section.
+\item[-] $\AR{3.3}$: We thank the referee 3 for this good suggestion. We move this Section as Section 8 after the evaluation, and re-name this section as Future Work Discussions.
+
+
+\end{itemize}
+
+
+
+\end{document}
